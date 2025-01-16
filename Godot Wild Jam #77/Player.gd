@@ -14,22 +14,21 @@ var current_animal_type: String = ""  # Current animal type
 @export var gravity = 800
 
 func _ready():
-	morph_to("elephant")  # Start as the elephant
+	morph_to("elephant", Vector2.ZERO)  # Start as the elephant
 
-func morph_to(animal_type: String):
+func morph_to(animal_type: String, spawn_pos: Vector2):
 	if animal_type in animals:
-		# Remove the current animal if it exists
-
+		# Remove the current animal if it exists		
 		if current_animal:
 			current_animal.queue_free()
-
+		
 		# Instantiate the new animal scene
 		current_animal = animals[animal_type].instantiate() as CharacterBody2D
 		#add_child(current_animal)
 
 		# Set the new animal's position relative to the parent (this should be the player or character)
-		current_animal.position = self.global_position  
-		current_animal.velocity = self.velocity  
+		current_animal.position = spawn_pos
+		current_animal.velocity = velocity  
 		add_child(current_animal)
 		
 		# Update the current animal type
@@ -61,11 +60,11 @@ func handle_movement(delta):
 
 func handle_morphing_input():
 	if Input.is_action_just_pressed("morph_elephant"):
-		print(current_animal.global_position)
-		morph_to("elephant")
+		#print(current_animal.global_position)
+		morph_to("elephant",current_animal.global_position)
 	elif Input.is_action_just_pressed("morph_armadillo"):
-		print(current_animal.global_position)
-		morph_to("armadillo")
+		#print(current_animal.global_position)
+		morph_to("armadillo", current_animal.global_position)
 	elif Input.is_action_just_pressed("morph_monkey"):
-		print(current_animal.global_position)
-		morph_to("monkey")
+		#print(current_animal.global_position)
+		morph_to("monkey",current_animal.global_position)
