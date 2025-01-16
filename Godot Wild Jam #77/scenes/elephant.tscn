@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://duaq06uney2fc"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_fd56k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o4rwd"]
+size = Vector2(28, 15)
+
+[node name="Elephant" type="CharacterBody2D"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(1.43051e-06, 0)
+scale = Vector2(30, 16)
+mesh = SubResource("QuadMesh_fd56k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_o4rwd")

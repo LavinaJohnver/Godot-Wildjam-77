@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://0jsrh1onp3k5"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_wmylc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_brxag"]
+radius = 9.0
+
+[node name="Armadillo" type="CharacterBody2D"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(0, 2.86102e-06)
+scale = Vector2(20.0227, 20.0227)
+mesh = SubResource("SphereMesh_wmylc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_brxag")
